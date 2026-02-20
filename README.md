@@ -16,7 +16,7 @@ direction TB
     }
 
     class Dates {
-	    - int fullDate
+	    - string fullDate
 	    - int Day
 	    - int Month
 	    - int Year
