@@ -24,3 +24,6 @@ run: Program
 
 debug: Program
 	gdb Program
+
+valgrind: Program
+	valgrind --leakcheck=full ./Program
