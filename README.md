@@ -78,4 +78,10 @@ valgrind: program
 ~                                                    
 '''
 
+In date() 
+add an array of 13 string values starting with null as 0 so that jan = 1 etc.
 
+Address takes in 4 strings and prints them out
+
+Try student
+student takes in all data and makes them into smaller ones
