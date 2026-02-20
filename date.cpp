@@ -31,10 +31,13 @@ void Date::init(std::string dateString){
 
 	converter << sMonth << " " << sDay << " " << sYear;
 	converter >> month >> day >> year;
+
+	//std::string monthArray[13] = {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
 } //end initializer 
 
 void Date::printDate(){
-	std::cout << month << " " << day << " " << year << std::endl;
+	std::cout << monthArray[month] << " " << day << " " << year << std::endl;
 } //end printDate
 
 

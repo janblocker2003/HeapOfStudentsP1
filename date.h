@@ -10,6 +10,7 @@ class Date{
 		int month;
 		int day;
 		int year;
+		std::string monthArray[13] = {"", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	public:
 		Date();
 		void init(std::string dateString);
