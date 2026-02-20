@@ -1,29 +1,29 @@
 //make file
 
-Program: main.o student.o date.o address.o
-	g++ -g main.o student.o date.o address.o -o Program
+program: main.o student.o date.o address.o
+	g++ -g main.o student.o date.o address.o -o program
 
 main.o: main.cpp student.h date.h address.h
 	g++ -g -c main.cpp
 
-student.o: student.h student.cpp
+student.o: student.h date.h address.h student.cpp
 	g++ -g -c student.cpp
 
-date.o: date.h date.cpp student.h
+date.o: date.h date.cpp 
 	g++ -g -c date.cpp
 
-address.o: address.h address.cpp student.h
+address.o: address.h address.cpp
 	g++ -g -c address.cpp
 
 clean:
-	rm Program
+	rm program
 	rm *.o
 
-run: Program
-	./Program
+run: program
+	./program
 
-debug: Program
-	gdb Program
+debug: program
+	gdb program
 
-valgrind: Program
-	valgrind --leakcheck=full ./Program
+valgrind: program
+	valgrind --leakcheck=full ./program
