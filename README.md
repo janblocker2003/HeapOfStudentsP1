@@ -5,37 +5,39 @@
 ```mermaid
 classDiagram
 direction TB
-    class Student {
-        - string name
-        + Student()
-        + Student(name)
-        + printStudent()
-    }
-
     class Address {
-        - string fullAddress
-        - int zipCode
-        - string street
-        - string city
-        - string state
-        + Adress()
-        + Address(fullAddress)
+	    - string street
+	    - string city
+	    - string state
+	    - int zip
+	    + Adress()
+	    + init(street, city, state, zip)
+	    + void printAddress()
     }
 
-    class Dates {
-        - int fullDate
+    class Date {
+	    - int Month
         - int Day
-        - int Month 
-        - int Year
-        + Dates()
-        + Dates(fullDate)
-        + DatesDestructor()
-        + printDate(int Day, int Month, int Year)
-        
-        
+	    - int Year
+	    + Date()
+	    + init(dateString)
+	    + void printDate()
     }
 
-    Address --|> Student
-    Dates --|> Student
+    class Student {
+	    - string firstName
+	    - string lastName
+        - Address: address
+	    - Date: birthDate
+	    - Date: gradDate
+	    - int creditHours
+	    + Student()
+	    + init(string studentString)
+	    + void printStudent()
+	    + void getLastFirst() return string
+    }
+
+    Address <|-- Student
+    Date <|-- Student
 ```
 
