@@ -10,12 +10,12 @@ direction TB
 	    - string city
 	    - string state
 	    - int zipCode
-        + Adress()
+	    + Adress()
 	    + Address(street, city, state, zipCode)
 	    + void printAddress()
     }
 
-    class Dates {
+    class Date {
 	    - string fullDate
 	    - int Day
 	    - int Month
@@ -30,16 +30,17 @@ direction TB
 	    -string studentString
 	    - string firstName
 	    - string lastName
-        - string birthDate
-        - string gradDate
-        - int creditHours
+        - Address: address
+	    - Date: birthDate
+	    - Date: gradDate
+	    - int creditHours
 	    + Student()
 	    + Student(studentString)
 	    + void printStudent()
 	    + void getLastFirst()
     }
 
-    Address --|> Student
-    Dates --|> Student
+    Address <|-- Student
+    Date <|-- Student
 ```
 
