@@ -9,25 +9,22 @@ direction TB
 	    - string street
 	    - string city
 	    - string state
-	    - int zipCode
+	    - int zip
 	    + Adress()
-	    + Address(street, city, state, zipCode)
+	    + init(street, city, state, zip)
 	    + void printAddress()
     }
 
     class Date {
-	    - string fullDate
-	    - int Day
 	    - int Month
+        - int Day
 	    - int Year
-	    + Dates()
-	    + Dates(fullDate)
-	    + DatesDestructor()
-	    + void printDate(int Day, int Month, int Year)
+	    + Date()
+	    + init(dateString)
+	    + void printDate()
     }
 
     class Student {
-	    -string studentString
 	    - string firstName
 	    - string lastName
         - Address: address
@@ -35,9 +32,9 @@ direction TB
 	    - Date: gradDate
 	    - int creditHours
 	    + Student()
-	    + Student(studentString)
+	    + init(string studentString)
 	    + void printStudent()
-	    + void getLastFirst()
+	    + void getLastFirst() return string
     }
 
     Address <|-- Student
