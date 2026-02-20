@@ -1,9 +1,12 @@
 
-program: main.o date.o address.o
-	g++ -g main.o date.o address.o -o program
+program: main.o date.o address.o student.o
+	g++ -g main.o date.o address.o student.o -o program
 
-main.o: main.cpp date.h address.h
+main.o: main.cpp date.h address.h student.h
 	g++ -g -c main.cpp
+
+student.o: student.h date.h address.h student.cpp
+	g++ -g -c student.cpp
 
 date.o: date.h date.cpp 
 	g++ -g -c date.cpp
