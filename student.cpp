@@ -7,9 +7,11 @@
 Student::Student(){
 	firstName = "Jane";
 	lastName = "Doe";
-	Student::address = Address();
-	Student::birthDate = Date();
-	Student::gradDate = Date();
+	//adding heap variables
+	*Student::address = new Address();
+	*Student::birthDate = new Date();
+	*Student::gradDate = new Date();
+	//this may also be formatted as address = new std::string(); *address = *Student::address;
 	creditHours = 0;
 } //end constructor
 
@@ -46,6 +48,13 @@ void Student::init(std::string studentString){
 	converter << sFirstName << " " << sLastName << " " << sStreet << " " << sCity << " " << sState << " " << sZip << " " << sBirthDate << " " << sGradDate << " " << sCreditHours;
 	converter >> firstName >> lastName >> street >> city >> state >> zip >> birthDate >> gradDate >> creditHours;
 } //end initializer
+
+~Student(){
+	//deleting heap variables
+	delete address;
+	delete birthDate;
+	delete gradDate;
+} //ending destructor
 
 void Student::printStudent(){
 	std::cout << firstName << " " << lastName << std::endl;
