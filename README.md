@@ -36,6 +36,7 @@ direction TB
 	    + Student()
 	    + init(string studentString)
 		+ ~Student() destructor
+		+ string getLastFirst()
 	    + string getFirstName()
 		+ string getLastName()
 		+ int getCreditHours
