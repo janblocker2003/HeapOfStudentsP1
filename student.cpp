@@ -46,11 +46,11 @@ void Student::init(std::string studentString){
 	getline(converter, sCreditHours);
 	
 	// the address data needs to go to address class!
-	address->init(sStreet, sCity, sState, sZip)
+	address->init(sStreet, sCity, sState, sZip);
 
 	// the dates need to go to their date class! can't assign them here
-	birthDate->init(sBirthDate)
-	gradDate->init(sGradDate)
+	birthDate->init(sBirthDate);
+	gradDate->init(sGradDate);
 
 	//convert zip and creditHours to ints
 	converter.clear();
@@ -82,14 +82,14 @@ std::string Student::getLastFirst(){
 	std::stringstream converter;
 	converter.str("");
 	converter << lastName << ", " << firstName;
-	return converter.str()
+	return converter.str();
 } //getLastFirst ended
 
 std::string Student::getLastName(){
 	return lastName;
 } // getLastName ended
 
-std::string Student::getLastName(){
+std::string Student::getFirstName(){
 	return firstName;
 } // getFirstName ended
 
