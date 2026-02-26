@@ -10,7 +10,7 @@ direction TB
 	    - string city
 	    - string state
 	    - int zip
-	    + Adress()
+	    + Address()
 	    + init(street, city, state, zip)
 	    + void printAddress()
     }
@@ -27,12 +27,13 @@ direction TB
     class Student {
 	    - string firstName
 	    - string lastName
-        - Address: address
-	    - Date: birthDate
-	    - Date: gradDate
+        - pointer Address: address
+	    - pointer Date: birthDate
+	    - pointer Date: gradDate
 	    - int creditHours
 	    + Student()
 	    + init(string studentString)
+		+ ~Student() destructor
 	    + void printStudent()
 	    + void getLastFirst() return string
     }
