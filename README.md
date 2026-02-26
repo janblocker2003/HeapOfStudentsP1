@@ -84,5 +84,22 @@ add an array of 13 string values starting with null as 0 so that jan = 1 etc.
 
 Address takes in 4 strings and prints them out
 
-Try student
-student takes in all data and makes them into smaller ones
+# New main notes from teacher!!!!
+
+1. should open the students.csv file
+2. shoudl create a vector of student pointers
+3. should load each student from a line of all the students
+4. present a menu to the user
+   - quit
+   - print the names of all the students
+   - print details of all the students
+   - search for a student
+5. the user should be able to choose from at least those three options
+6. when user quits:
+   - the program cleans up the vector (vector will be on the heap)
+   - close the student file
+   - exit
+
+
+
+
