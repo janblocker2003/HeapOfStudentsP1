@@ -5,13 +5,13 @@
 #include "student.h"
 
 Student::Student(){
-	firstName = "Jane";
-	lastName = "Doe";
+	firstName = "";
+	lastName = "";
 	//adding heap variables
-	*Student::address = new Address();
-	*Student::birthDate = new Date();
-	*Student::gradDate = new Date();
-	//this may also be formatted as address = new std::string(); *address = *Student::address;
+	address = new Address();
+	birthDate = new Date();
+	gradDate = new Date();
+	// these new variables are pointers^
 	creditHours = 0;
 } //end constructor
 
@@ -19,8 +19,9 @@ void Student::init(std::string studentString){
 	//make a stringstream to break up the parts of the studentString
 	
 	std::stringstream converter;
-	std::string sFirstName;
-	std::string sLastName;
+	//std::string sFirstName;
+	//std::string sLastName;
+	//dont need -> can be loaded directly into parameters
 	std::string sStreet;
 	std::string sCity;
 	std::string sState;
@@ -29,10 +30,13 @@ void Student::init(std::string studentString){
 	std::string sGradDate;
 	std::string sCreditHours;
 
-	//separate to temp strings
+	//clear the converter first!
+	converter.clear();
+	
+	//separate to temp strings made above from studentString
 	converter.str(studentString);
-	getline(converter, sFirstName, ',');
-	getline(converter, sLastName, ',');
+	getline(converter, firstName, ',');
+	getline(converter, lastName, ',');
 	getline(converter, sStreet, ',');
 	getline(converter, sCity, ',');
 	getline(converter, sState, ',');
@@ -40,16 +44,23 @@ void Student::init(std::string studentString){
 	getline(converter, sBirthDate, ',');
 	getline(converter, sGradDate, ',');
 	getline(converter, sCreditHours);
+	
+	// the address data needs to go to address class!
+	address->init(sStreet, sCity, sState, sZip)
+
+	// the dates need to go to their date class! can't assign them here
+	birthDate->init(sBirthDate)
+	gradDate->init(sGradDate)
 
 	//convert zip and creditHours to ints
 	converter.clear();
 	converter.str("");
+	converter << sCreditHours;
+	converter >> creditHours;
 
-	converter << sFirstName << " " << sLastName << " " << sStreet << " " << sCity << " " << sState << " " << sZip << " " << sBirthDate << " " << sGradDate << " " << sCreditHours;
-	converter >> firstName >> lastName >> street >> city >> state >> zip >> birthDate >> gradDate >> creditHours;
 } //end initializer
 
-~Student(){
+Student::~Student(){
 	//deleting heap variables
 	delete address;
 	delete birthDate;
@@ -58,12 +69,32 @@ void Student::init(std::string studentString){
 
 void Student::printStudent(){
 	std::cout << firstName << " " << lastName << std::endl;
-	std::cout << street << endl;
-	std::cout << city << " " << state << ", " << zip << std::endl;
-	std::cout << "DOB: " << birthDate << std::endl;
-	std::cout << "Grad: " << gradDate << std::endl;
+	address->printAddress();
+	std::cout << "Birth Date: ";
+	birthDate->printDate();
+	std::cout << "Grad Date: ";
+	gradDate->printDate();
 	std::cout << "Credits: " << creditHours << std::endl;
+	std::cout << std::endl;
 } //end printStudent
 
+std::string Student::getLastFirst(){
+	std::stringstream converter;
+	converter.str("");
+	converter << lastName << ", " << firstName;
+	return converter.str()
+} //getLastFirst ended
+
+std::string Student::getLastName(){
+	return lastName;
+} // getLastName ended
+
+std::string Student::getLastName(){
+	return firstName;
+} // getFirstName ended
+
+int Student::getCreditHours(){
+	return creditHours;
+} // getCreditHours ended
 
 
