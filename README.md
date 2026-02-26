@@ -16,7 +16,8 @@ direction TB
     }
 
     class Date {
-	    - int Month
+	    - string dateString
+		- int Month
         - int Day
 	    - int Year
 	    + Date()
@@ -25,7 +26,8 @@ direction TB
     }
 
     class Student {
-	    - string firstName
+	    - string studentString
+		- string firstName
 	    - string lastName
         - pointer Address: address
 	    - pointer Date: birthDate
@@ -34,8 +36,9 @@ direction TB
 	    + Student()
 	    + init(string studentString)
 		+ ~Student() destructor
-	    + void printStudent()
-	    + void getLastFirst() return string
+	    + string getFirstName()
+		+ string getLastName()
+		+ int getCreditHours
     }
 
     Address <|-- Student
