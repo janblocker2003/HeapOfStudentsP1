@@ -25,4 +25,4 @@ debug: program
 	gdb program
 
 valgrind: program
-	valgrind --leakcheck=full ./program
+	valgrind --leak-check=full ./program

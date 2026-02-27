@@ -24,7 +24,8 @@ std::string menu();
 int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
-	//printNames();
+	printNames(students);
+	delStudents(students);
 
 	/*
 	std::cout << "Hello!" << std::endl;
@@ -41,7 +42,7 @@ void loadStudents(std::vector<Student*>& students){
         std::string currentLine;
         inFile.open("students.csv");
         while(getline(inFile, currentLine)){
-                std::cout << currentLine << std::endl;  //for testing purposes
+                //std::cout << currentLine << std::endl;  //for testing purposes
                 Student* s = new Student();
                 s->init(currentLine);
                 students.push_back(s);
@@ -49,9 +50,19 @@ void loadStudents(std::vector<Student*>& students){
         inFile.close();
 } // end loadStudents function
 
+void printNames(std::vector<Student*>& students){
+	for (Student* student: students){
+		std::cout << student->getLastFirst();
+		std::cout << ", " << student->getCreditHours() << std::endl;
+	} // end for loop
 
+} // end printNames function
 
-
+void delStudents(std::vector<Student*>& students){
+	for (Student* student: students){
+		delete student;
+	} // end for loop
+} // end delStudents function
 
 void testAddress(){
 	Address a;
