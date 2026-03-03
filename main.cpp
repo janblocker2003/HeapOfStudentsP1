@@ -24,7 +24,8 @@ std::string menu();
 int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
-	printNames(students);
+	//printNames(students);
+	printDetails(students);
 	delStudents(students);
 
 	/*
@@ -64,6 +65,26 @@ void delStudents(std::vector<Student*>& students){
 	} // end for loop
 } // end delStudents function
 
+void printDetails(std::vector<Student*>& students){
+	for (Student* student: students){
+		std::cout << student->getFirstName() << " " << student->getLastName() << std::endl;
+		student->init(student*) = 
+		std::cout << student->init(student*) << Address::printAddress() << std::endl;
+		std::cout << "DOB: " << student->Date::printDate() << std::endl;
+		std::cout << "Grad: " << student->init(student*) << Date::printDate() << std::endl;
+		std::cout << "Credits: " << student->getCreditHours() << std::endl;
+		std::cout << "__________________________________________________________" << std::endl;
+	} //end for loop
+	std::cout << std::endl << std::endl;
+} //end printDetails function
+
+void search(std::vector<Student*>&);
+
+std::string menu();
+
+
+
+///TESTERS!!!!!!
 void testAddress(){
 	Address a;
 	a.init("123 W Main St", "Muncie", "IN", "47303");
