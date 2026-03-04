@@ -22,6 +22,12 @@ void printDetails(std::vector<Student*>&);
 void search(std::vector<Student*>&);
 void delStudents(std::vector<Student*>&);
 std::string menu();
+void sort(std::vector<Student*>&);
+void sortByFirst(Student& a, Student& b);
+void sortByLast(Student& a, Student& b);
+void sortByCreds(Student& a, Student& b);
+
+const int N = sizeof(students) / sizeof(Student);
 
 
 int main(){
@@ -43,6 +49,12 @@ int main(){
 		else if (response == std::to_string(3)) {
 			search(students);
 		} // end 3 if
+		else if (response == std::to_string(4)) {
+			sort(students);
+		} // end 4 if
+		else {
+			std::cout << "That was not a proper response" << std::endl;
+		} // end else
 	} //end while
 	delStudents(students);
 
@@ -120,14 +132,60 @@ std::string menu(){
 	menuOptions["1"] = "print all student names";
 	menuOptions["2"] = "print all student data";
 	menuOptions["3"] = "find a student";
+	menuOptions["4"] = "sort students";
 	std::cout << std::endl << std::endl;
 	for (const auto& option : menuOptions) {
 		std::cout << option.first << ": " << option.second << std::endl;
 	} //end for
-	std::cout << std::endl << std::endl << "Please choose 0-3: ";
+	std::cout << std::endl << std::endl << "Please choose 0-4: ";
 	std::cin >> input;
 	return input;
 } //end menu
+
+
+void sort(std::vector<Student*>& students){
+	std::map<std::string, std::string> menuOptions;
+	std::string input = "";
+	menuOptions["0"] = "Sort by First Name";
+	menuOptions["1"] = "Sort by Last Name";
+	menuOptions["2"] = "Sort by Credit Hours";
+	std::cout << std::endl << std::endl;
+        for (const auto& option : menuOptions) {
+                std::cout << option.first << ": " << option.second << std::endl;
+        } //end for
+        std::cout << std::endl << std::endl << "Please choose 0-2: ";
+        std::cin >> input;
+	if (input == std::to_string(0)) {
+		for (Student* student: students){
+			std::sort(students, students + N, sortByFirst);
+		} //end for
+	} // end if
+	else if (input == std::to_string(1)) {
+                for (Student* student: students){
+			std::sort(students, students + N, sortByLast);
+		} //end for
+	} // end if
+	else if (input == std::to_string(2)) {
+                for (Student* student: students){	
+			std::sort(students, students + N, sortByCreds);
+		} //end for
+	} //end if
+	else {
+		std::out << "That was not a proper response" << std::endl;
+	std::cout << std::endl;
+} //end sort
+
+void sortByFirst(Student& a, Student& b){
+	return(a.getFirstName() < b.getFirstName());
+} //end sortByFirst
+
+void sortByLast(Student& a, Student& b){
+	return(a.getLastName() < b.getLastName());
+} //end sortByLast
+
+void sortByCreds(Student& a, Student& b){
+	return(a.getCredHours() > b.getCredHours());
+} //end sortByCreds
 
 
 ///TESTERS!!!!!!
