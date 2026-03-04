@@ -28,10 +28,10 @@ int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
 	//printNames(students);
-	//printDetails(students);
+	printDetails(students);
 	//search(students);
 	std::string response = "";
-	response = menu();
+	//response = menu();
 	delStudents(students);
 
 	/*
@@ -74,11 +74,9 @@ void delStudents(std::vector<Student*>& students){
 void printDetails(std::vector<Student*>& students){
 	for (Student* student: students){
 		std::cout << student->getFirstName() << " " << student->getLastName() << std::endl;
-		//std::cout << student->init(student->Address* Student::address) std::endl;
-		//std::cout << address->Address::printAddress() << std::endl; 
-		//std::cout << student->init(student*) << Address::printAddress() << std::endl;
-		//std::cout << "DOB: " << student->Date::printDate() << std::endl;
-		//std::cout << "Grad: " << student->init(student*) << Date::printDate() << std::endl;
+		std::cout << student->getAddress() << std::endl;
+		std::cout << "DOB: " << student->getBirthDate() << std::endl;
+		std::cout << "Grad: " << student->getGradDate() << std::endl;
 		std::cout << "Credits: " << student->getCreditHours() << std::endl;
 		std::cout << "__________________________________________________________" << std::endl;
 	} //end for loop
