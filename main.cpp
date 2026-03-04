@@ -88,14 +88,11 @@ void search(std::vector<Student*>& students){
   	std::cin >> userName;
 	for (Student* student: students){
 		std::stringstream converter;
-		converter << static_cast<void*>(student);
+		converter << *student;
 		std::string copyStudent = converter.str();
-		//std::string copyStudent = std::to_string(student->id);
 		std::size_t found = copyStudent.find(userName);
 		if (found!=std::string::npos){
-			//std::vector<Student*> newStew;
 			Student* s = new Student();
-			//newStew = student;
 			std::cout << copyStudent << std::endl; //testing
 			s->init(copyStudent);
         		s->printStudent();

@@ -21,9 +21,13 @@ class Student{
 		~Student();
 		void printStudent();
 		std::string getLastFirst();
-		std::string getLastName();
-		std::string getFirstName();
-		int getCreditHours();
+		std::string getLastName() const;
+		std::string getFirstName() const;
+		std::string getAddress() const;
+		std::string getBirthDate() const;
+		std::string getGradDate() const;
+		int getCreditHours() const;
+		friend std::ostream& operator<<(std::ostream&, const Student&);
 }; //end student class
 
 

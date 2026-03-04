@@ -27,3 +27,8 @@ void Address::init(std::string street, std::string city, std::string state, std:
 void Address::printAddress(){
 	std::cout << street << std::endl << city << " " << state << ", " << zip << std::endl;
 } //end printAddress
+
+std::string Address::getAddress() const {
+	std::string address = street + ", " + city + ", " + state + ", " + std::to_string(zip);
+	return address;
+} //end getAddress

@@ -15,6 +15,7 @@ class Date{
 		Date();
 		void init(std::string dateString);
 		void printDate();
+		std::string getDate() const;
 };
 
 

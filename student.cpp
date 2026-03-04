@@ -85,16 +85,32 @@ std::string Student::getLastFirst(){
 	return converter.str();
 } //getLastFirst ended
 
-std::string Student::getLastName(){
+std::string Student::getLastName() const {
 	return lastName;
 } // getLastName ended
 
-std::string Student::getFirstName(){
+std::string Student::getFirstName() const {
 	return firstName;
 } // getFirstName ended
 
-int Student::getCreditHours(){
+std::string Student::getAddress() const {
+        return address->getAddress();
+} // getAddress ended
+
+std::string Student::getBirthDate() const {
+        return birthDate->getDate();
+} // getBirthDate ended
+
+std::string Student::getGradDate() const {
+        return gradDate->getDate();
+} // getGradDate ended
+
+int Student::getCreditHours() const {
 	return creditHours;
 } // getCreditHours ended
 
-
+// Overload the stream insertion operator for the Student class
+std::ostream& operator<<(std::ostream& converter, const Student& student) {
+	converter << student.getFirstName() << "," << student.getLastName() << "," << student.getAddress() << "," << student.getBirthDate() << "," << student.getGradDate() << "," << student.getCreditHours() << std::endl;
+    return converter;
+}

@@ -15,7 +15,8 @@ class Address{
 		Address();
 		void init(std::string street, std::string city, std::string state, std::string sZip);
 		void printAddress();
-};
+		std::string getAddress() const;
+}; //end address class
 
 
 #endif

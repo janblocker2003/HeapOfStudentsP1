@@ -40,5 +40,7 @@ void Date::printDate(){
 	std::cout << monthArray[month] << " " << day << " " << year << std::endl;
 } //end printDate
 
-
-
+std::string Date::getDate() const {
+        std::string date = std::to_string(month) + "/" + std::to_string(day) + "/" + std::to_string(year);
+        return date;
+} //end getDate
