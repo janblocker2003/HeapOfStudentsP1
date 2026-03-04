@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <string>
 #include "date.h"
 #include "address.h"
 #include "student.h"
@@ -25,7 +27,8 @@ int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
 	//printNames(students);
-	printDetails(students);
+	//printDetails(students);
+	search(students);
 	delStudents(students);
 
 	/*
@@ -79,7 +82,23 @@ void printDetails(std::vector<Student*>& students){
 	std::cout << std::endl << std::endl;
 } //end printDetails function
 
-void search(std::vector<Student*>&);
+void search(std::vector<Student*>& students){
+	std::string userName;
+	std::cout << "Last name of student: ";
+  	std::cin >> userName;
+	for (Student* student: students){
+		std::string copyStudent = std::to_string(student*);
+		std::size_t found = copyStudent.find(userName);
+		if (found!=std::string::npos){
+			//std::vector<Student*> newStew;
+			Student* s = new Student();
+			//newStew = student;
+			s->init(student*);
+        		s->printStudent();
+			//printDetails(newStew);
+		} //end if
+	} // end for
+} //end search
 
 std::string menu();
 
