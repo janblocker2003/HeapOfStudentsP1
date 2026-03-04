@@ -93,14 +93,9 @@ void search(std::vector<Student*>& students){
 		std::size_t found = copyStudent.find(userName);
 		if (found!=std::string::npos){
 			Student* s = new Student();
-			std::cout << copyStudent << std::endl; //testing
 			s->init(copyStudent);
         		s->printStudent();
-			//printDetails(newStew);
 		} //end if
-		else{
-			std::cout << "didn't find: " << copyStudent << std::endl; //tester
-		} //end else
 	} // end for
 } //end search
 
