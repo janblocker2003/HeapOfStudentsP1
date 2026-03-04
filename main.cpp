@@ -10,6 +10,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include <map>
 
 void testAddress();
 void testDate();
@@ -28,7 +29,9 @@ int main(){
 	loadStudents(students);
 	//printNames(students);
 	//printDetails(students);
-	search(students);
+	//search(students);
+	std::string response = "";
+	response = menu();
 	delStudents(students);
 
 	/*
@@ -99,8 +102,21 @@ void search(std::vector<Student*>& students){
 	} // end for
 } //end search
 
-std::string menu();
-
+std::string menu(){
+	std::map<std::string, std::string> menuOptions;
+	std::string input = "";
+	menuOptions["0"] = "quit";
+	menuOptions["1"] = "print all student names";
+	menuOptions["2"] = "print all student data";
+	menuOptions["3"] = "find a student";
+	std::cout << std::endl << std::endl;
+	for (const auto& option : menuOptions) {
+		std::cout << option.first << ": " << option.second << std::endl;
+	} //end for
+	std::cout << std::endl << std::endl << "Please choose 0-3: ";
+	std::cin >> input;
+	return input;
+} //end menu
 
 
 ///TESTERS!!!!!!
