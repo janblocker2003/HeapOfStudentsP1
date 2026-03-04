@@ -114,3 +114,16 @@ std::ostream& operator<<(std::ostream& converter, const Student& student) {
 	converter << student.getFirstName() << "," << student.getLastName() << "," << student.getAddress() << "," << student.getBirthDate() << "," << student.getGradDate() << "," << student.getCreditHours() << std::endl;
     return converter;
 }
+/*
+bool sortByFirst(Student* a, Student* b) {
+        return(a->getFirstName() < b->getFirstName());
+} //end sortByFirst
+
+bool sortByLast(Student* a, Student* b) {
+        return(a->getLastName() < b->getLastName());
+} //end sortByLast
+
+bool sortByCreds(Student* a, Student* b) {
+        return(a->getCredHours() > b->getCredHours());
+} //end sortByCreds
+*/

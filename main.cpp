@@ -22,12 +22,10 @@ void printDetails(std::vector<Student*>&);
 void search(std::vector<Student*>&);
 void delStudents(std::vector<Student*>&);
 std::string menu();
-void sort(std::vector<Student*>&);
-void sortByFirst(Student& a, Student& b);
-void sortByLast(Student& a, Student& b);
-void sortByCreds(Student& a, Student& b);
-
-const int N = sizeof(students) / sizeof(Student);
+void sortStudents(std::vector<Student*>&);
+bool sortByFirst(Student& a, Student& b);
+bool sortByLast(Student& a, Student& b);
+bool sortByCreds(Student& a, Student& b);
 
 
 int main(){
@@ -50,7 +48,7 @@ int main(){
 			search(students);
 		} // end 3 if
 		else if (response == std::to_string(4)) {
-			sort(students);
+			sortStudents(students);
 		} // end 4 if
 		else {
 			std::cout << "That was not a proper response" << std::endl;
@@ -143,7 +141,7 @@ std::string menu(){
 } //end menu
 
 
-void sort(std::vector<Student*>& students){
+void sortStudents(std::vector<Student*>& students){
 	std::map<std::string, std::string> menuOptions;
 	std::string input = "";
 	menuOptions["0"] = "Sort by First Name";
@@ -157,35 +155,39 @@ void sort(std::vector<Student*>& students){
         std::cin >> input;
 	if (input == std::to_string(0)) {
 		for (Student* student: students){
-			std::sort(students, students + N, sortByFirst);
+			std::sort(students.begin(), students.end(), sortByFirst);
 		} //end for
 	} // end if
 	else if (input == std::to_string(1)) {
                 for (Student* student: students){
-			std::sort(students, students + N, sortByLast);
+			std::sort(students.begin(), students.end(), sortByLast);
 		} //end for
 	} // end if
 	else if (input == std::to_string(2)) {
                 for (Student* student: students){	
-			std::sort(students, students + N, sortByCreds);
+			std::sort(students.begin(), students.end(), sortByCreds);
 		} //end for
 	} //end if
 	else {
-		std::out << "That was not a proper response" << std::endl;
+		std::cout << "That was not a proper response" << std::endl;
 	std::cout << std::endl;
 } //end sort
 
-void sortByFirst(Student& a, Student& b){
-	return(a.getFirstName() < b.getFirstName());
+//(Node* a, Node* b) { return (*a < *b); }
+
+bool sortByFirst(const Student* a, const Student* b) {
+	return(a->getFirstName() < b->getFirstName());
 } //end sortByFirst
 
-void sortByLast(Student& a, Student& b){
-	return(a.getLastName() < b.getLastName());
+bool sortByLast(const Student* a, const Student* b) {
+	return(a->getLastName() < b->getLastName());
 } //end sortByLast
 
-void sortByCreds(Student& a, Student& b){
-	return(a.getCredHours() > b.getCredHours());
+bool sortByCreds(const Student* a, const Student* b) {
+	return(a->getCredHours() > b->getCredHours());
 } //end sortByCreds
+
+
 
 
 ///TESTERS!!!!!!
