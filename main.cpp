@@ -27,11 +27,23 @@ std::string menu();
 int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
-	//printNames(students);
-	printDetails(students);
-	//search(students);
 	std::string response = "";
-	//response = menu();
+	bool keepGoing = true;
+	while (keepGoing == true){
+		response = menu();
+		if (response == std::to_string(0)) {
+			keepGoing = false;
+		} //end 0 if
+		else if (response == std::to_string(1)) {
+			printNames(students);
+		} // end 1 if
+		else if (response == std::to_string(2)) {
+			printDetails(students);
+		} // end 2 if
+		else if (response == std::to_string(3)) {
+			search(students);
+		} // end 3 if
+	} //end while
 	delStudents(students);
 
 	/*
@@ -87,6 +99,7 @@ void search(std::vector<Student*>& students){
 	std::string userName;
 	std::cout << "Last name of student: ";
   	std::cin >> userName;
+	std::cout << std::endl << std::endl;
 	for (Student* student: students){
 		std::stringstream converter;
 		converter << *student;
