@@ -27,7 +27,6 @@ bool sortByFirst(Student& a, Student& b);
 bool sortByLast(Student& a, Student& b);
 bool sortByCreds(Student& a, Student& b);
 
-
 int main(){
 	std::vector<Student*> students;
 	loadStudents(students);
@@ -47,22 +46,16 @@ int main(){
 		else if (response == std::to_string(3)) {
 			search(students);
 		} // end 3 if
+		
 		else if (response == std::to_string(4)) {
 			sortStudents(students);
 		} // end 4 if
+		
 		else {
 			std::cout << "That was not a proper response" << std::endl;
 		} // end else
 	} //end while
 	delStudents(students);
-
-	/*
-	std::cout << "Hello!" << std::endl;
-	testAddress();
-	testDate();
-	testStudent();
-
-	*/
 	return 0;
 } // end main
 
@@ -71,7 +64,6 @@ void loadStudents(std::vector<Student*>& students){
         std::string currentLine;
         inFile.open("students.csv");
         while(getline(inFile, currentLine)){
-                //std::cout << currentLine << std::endl;  //for testing purposes
                 Student* s = new Student();
                 s->init(currentLine);
                 students.push_back(s);
@@ -119,6 +111,7 @@ void search(std::vector<Student*>& students){
 			Student* s = new Student();
 			s->init(copyStudent);
         		s->printStudent();
+			delete s;
 		} //end if
 	} // end for
 } //end search
@@ -140,8 +133,7 @@ std::string menu(){
 	return input;
 } //end menu
 
-
-void sortStudents(std::vector<Student*>& students){
+void sortStudents(std::vector<Student*>& students) {
 	std::map<std::string, std::string> menuOptions;
 	std::string input = "";
 	menuOptions["0"] = "Sort by First Name";
@@ -154,64 +146,36 @@ void sortStudents(std::vector<Student*>& students){
         std::cout << std::endl << std::endl << "Please choose 0-2: ";
         std::cin >> input;
 	if (input == std::to_string(0)) {
-		for (Student* student: students){
+		for (Student* student: students) {
 			std::sort(students.begin(), students.end(), sortByFirst);
 		} //end for
 	} // end if
 	else if (input == std::to_string(1)) {
-                for (Student* student: students){
+                for (Student* student: students) {
 			std::sort(students.begin(), students.end(), sortByLast);
 		} //end for
 	} // end if
 	else if (input == std::to_string(2)) {
-                for (Student* student: students){	
+                for (Student* student: students) {	
 			std::sort(students.begin(), students.end(), sortByCreds);
 		} //end for
 	} //end if
 	else {
 		std::cout << "That was not a proper response" << std::endl;
+	} // end else
 	std::cout << std::endl;
 } //end sort
 
-//(Node* a, Node* b) { return (*a < *b); }
 
-bool sortByFirst(const Student* a, const Student* b) {
+bool sortByFirst(Student* a, Student* b) {
 	return(a->getFirstName() < b->getFirstName());
 } //end sortByFirst
 
-bool sortByLast(const Student* a, const Student* b) {
+bool sortByLast(Student* a, Student* b) {
 	return(a->getLastName() < b->getLastName());
 } //end sortByLast
 
-bool sortByCreds(const Student* a, const Student* b) {
-	return(a->getCredHours() > b->getCredHours());
+bool sortByCreds(Student* a, Student* b) {
+	return(a->getCreditHours() > b->getCreditHours());
 } //end sortByCreds
-
-
-
-
-///TESTERS!!!!!!
-void testAddress(){
-	Address a;
-	a.init("123 W Main St", "Muncie", "IN", "47303");
-	a.printAddress();
-} // end testAddress
-
-void testDate(){	
-	Date d;
-	d.init("01/27/1997");
-	d.printDate();
-} // end testDate
-
-void testStudent(){
-	std::string studentString = "Danielle,Johnson,32181 Johnson Course Apt. 389,New Jamesside,IN,59379,02/17/2004,05/15/2027,65";
-	Student* student = new Student();
-	student->init(studentString);
-	student->printStudent();
-	std::cout << std::endl;
-	std::cout << student->getLastFirst();
-	delete student;
-} // end testStudent
-
-
 

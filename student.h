@@ -28,9 +28,6 @@ class Student{
 		std::string getGradDate() const;
 		int getCreditHours() const;
 		friend std::ostream& operator<<(std::ostream&, const Student&);
-		//bool sortByFirst(Student& a, Student& b);
-		//bool sortByLast(Student& a, Student& b);
-		//bool sortByCreds(Student& a, Student& b);
 }; //end student class
 
 
